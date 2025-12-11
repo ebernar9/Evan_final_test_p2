@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ML Based Firewall System - Home</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            background-color: white;
+        }
+        .navbar {
+            background-color: #1e1e1e;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: fixed;    /* Make navbar stay at top */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;     /* Keeps navbar above all content */
+        }
+        .menu {
+       margin-right: 25px;
+        }
+
+        .navbar a {
+            color: white;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: white;
+            padding: 10px 18px;
+            color: #0078c2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background-color: #005f98;
+        }
+        .hero img {
+            width: 85%;
+            max-width: 900px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .login-link {
+            margin-top: 12px;
+            font-size: 15px;
+        }
+        .login-link a {
+            text-decoration: none;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">
+            <strong>ML Based Firewall System</strong>
+        </div>
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="Login.html">Login</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="rules.html">Rules</a>
+            <a href="guest-user.html">Guest Users</a>
+            <a href="create-guest.html">Creat Guest Account</a>
+            <a href="firewall-controls.html">Firewall Controls</a>
+            <a href="analytics.html">Analytics</a>
+            <a href="about.html">About</a>
+        </div>
+    </div>
+   <div class="content">
+    <!--- everything except navbar and hero -->
+   </div>
+    <div class="hero">
+        <h1>Secure Your Network with Intelligent Protection</h1>
+        <p>Our Machine Learning–Based Firewall keeps your system safe by detecting and blocking suspicious activity automatically.</p>
+      
+        <a href="create-guest.html">
+        <button class="btn-primary">Sign Up</button>
+        </a>
+        
+        <div class="login-link">
+            Already have an account? <a href="Login.html">Click here to login</a>
+        </div>
+        
+        <img src="firewall_webapp.jpg" alt="firewall image" style="width: 80%; max-width: 900px; border-radius: 10px;">
+    </div>
+
+</body>
+</html>

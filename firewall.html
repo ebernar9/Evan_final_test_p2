@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System-Based Firewall</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #4dd0e1;
+        }
+
+        .firewall-box {
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            margin: 40px auto;
+            box-shadow: 0 0 10px #4dd0e1;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        input {
+            width: 80%;
+        }
+
+        button {
+            background-color: #4dd0e1;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #26c6da;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>System-Based Firewall</h1>
+
+    <div class="firewall-box">
+        <p>Enter a Port Number to Allow or Block:</p>
+        <input type="number" id="portInput" placeholder="e.g., 8080">
+        <br>
+        <select id="actionSelect">
+            <option value="allow">Allow Port</option>
+            <option value="block">Block Port</option>
+        </select>
+        <br>
+        <button onclick="processPort()">Add Rule</button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const allowedPorts = [];
+        const blockedPorts = [];
+
+        function processPort() {
+            const port = document.getElementById("portInput").value;
+            const action = document.getElementById("actionSelect").value;
+            const result = document.getElementById("result");
+
+            if (port === "") {
+                result.textContent = "⚠️ Please enter a port number.";
+                result.style.color = "yellow";
+                return;
+            }
+
+            if (action === "allow") {
+                allowedPorts.push(port);
+                result.textContent = `✅ Port ${port} is now ALLOWED.`;
+                result.style.color = "#4caf50";
+            } else {
+                blockedPorts.push(port);
+                result.textContent = `⛔ Port ${port} is now BLOCKED.`;
+                result.style.color = "#f44336";
+            }
+
+            console.log("Allowed Ports:", allowedPorts);
+            console.log("Blocked Ports:", blockedPorts);
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System-Based Firewall Controller</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #4dd0e1;
+            margin-bottom: 10px;
+        }
+
+        .controller-box {
+            background-color: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            margin: 40px auto;
+            box-shadow: 0 0 15px #4dd0e1;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        input {
+            width: 70%;
+        }
+
+        button {
+            background-color: #4dd0e1;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #26c6da;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: rgba(255,255,255,0.15);
+            border-radius: 10px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        th {
+            color: #4dd0e1;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .allowed {
+            color: #4caf50;
+        }
+
+        .blocked {
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <h1>System Firewall Controller</h1>
+    <p>Manage system ports using Allow or Block rules</p>
+
+    <div class="controller-box">
+        <input type="number" id="portInput" placeholder="Enter Port Number">
+        <br>
+        <select id="actionSelect">
+            <option value="allow">Allow Port</option>
+            <option value="block">Block Port</option>
+        </select>
+        <br>
+        <button onclick="applyRule()">Apply Rule</button>
+        <p id="result"></p>
+    </div>
+
+    <h2>Firewall Rules</h2>
+    <table id="rulesTable">
+        <tr>
+            <th>Port</th>
+            <th>Action</th>
+        </tr>
+    </table>
+
+    <script>
+        const rules = [];
+
+        function applyRule() {
+            const port = document.getElementById("portInput").value;
+            const action = document.getElementById("actionSelect").value;
+            const result = document.getElementById("result");
+            const table = document.getElementById("rulesTable");
+
+            if (port === "") {
+                result.textContent = "⚠️ Please enter a valid port number.";
+                result.style.color = "yellow";
+                return;
+            }
+
+            // Save rule
+            rules.push({ port, action });
+
+            // Update message
+            if (action === "allow") {
+                result.textContent = `✅ Port ${port} is now ALLOWED.`;
+                result.style.color = "#4caf50";
+            } else {
+                result.textContent = `⛔ Port ${port} is now BLOCKED.`;
+                result.style.color = "#f44336";
+            }
+
+            // Add to table
+            const row = table.insertRow(-1);
+            const portCell = row.insertCell(0);
+            const actionCell = row.insertCell(1);
+            portCell.textContent = port;
+            actionCell.textContent = action.toUpperCase();
+            actionCell.className = (action === "allow") ? "allowed" : "blocked";
+
+            // Reset input
+            document.getElementById("portInput").value = "";
+        }
+    </script>
+</body>
+</html>
